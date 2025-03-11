@@ -38,6 +38,11 @@ app.post('/register', async (req, res) => {
 app.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
+  console.log
+  (
+
+    "jj"
+  );
   if (user && await bcrypt.compare(password, user.password)) {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
     res.json({ token, username });
